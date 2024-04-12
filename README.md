@@ -1,7 +1,7 @@
 
 # Rapport
 
-```
+
 Jag har ändrat appens namn till "MinApp" genom att ändrade på stringen kallad app_name
 
 ```
@@ -56,6 +56,6 @@ Internal och external webbsida implementeras med en url, sedan kallas funktioner
 en html-fil lades in i projektet genom att skapa en asset folder och lägga till en ny fil inuti den.
 
 
-![img_1.png](img_1.png ext)
-![img_2.png](img_2.png int)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 
