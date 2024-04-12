@@ -1,42 +1,61 @@
 
 # Rapport
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+```
+Jag har ändrat appens namn till "MinApp" genom att ändrade på stringen kallad app_name
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+<resources>
+    <string name="app_name">MinApp</string>
+    <string name="action_external_web">External Web Page</string>
+    <string name="action_internal_web">Internal Web Page</string>
+</resources>
+```
+
+Jag har också möjligjort internetåtkomst för appen inuti AndroidManifest.xml
+```
+   <uses-permission android:name="android.permission.INTERNET" />
+```
+Jag skapade ett webview element samt gav den ett id inuti activity_main.xml genom att ersätta ett Textview element
+```
+    <WebView
+        android:id="@+id/my_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+```
+Inuti MainActivity.Java gjordes variabeln myWebView som inuti OnCreate används för att webbsidor ska kunna visas i appen med en webbklient. 
+En referens görs till elementet som gjordes tidigare med ett ID. Java inställningar sätts till true.
+```
+       myWebView = findViewById(R.id.my_webview);
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        myWebView.setWebViewClient(new WebViewClient()); // Do not open in Chrome!
+```
+
+Internal och external webbsida implementeras med en url, sedan kallas funktionerna inuti onOptionsSelected
+```
+    public void showExternalWebPage(){
+        // TODO: Add your code for showing external web page here
+        myWebView.loadUrl("https://his.se");
     }
-}
+
+    public void showInternalWebPage(){
+        // TODO: Add your code for showing internal web page here
+        myWebView.loadUrl("https://his.se");
+    }
+    
+    //inuti onOptionsSelected
+    if (id == R.id.action_external_web) {
+            Log.d("==>","Will display external web page");
+            showExternalWebPage();
+            return true;
+        }
+    
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+en html-fil lades in i projektet genom att skapa en asset folder och lägga till en ny fil inuti den.
 
-![](android.png)
 
-Läs gärna:
+![img_1.png](img_1.png ext)
+![img_2.png](img_2.png int)
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
