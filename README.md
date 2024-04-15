@@ -41,7 +41,7 @@ Internal och external webbsida implementeras med en url, sedan kallas funktioner
 
     public void showInternalWebPage(){
         // TODO: Add your code for showing internal web page here
-        myWebView.loadUrl("https://his.se");
+        myWebView.loadUrl("file:///android_asset/about.html");
     }
     
     //inuti onOptionsSelected
