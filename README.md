@@ -57,5 +57,5 @@ en html-fil lades in i projektet genom att skapa en asset folder och lägga till
 
 
 ![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img.png](img.png)
 
